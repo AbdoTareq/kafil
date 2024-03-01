@@ -9,6 +9,13 @@ const kRoundedAll = BoxDecoration(
   ),
 );
 
+final OutlineInputBorder kBorder = OutlineInputBorder(
+  borderSide: const BorderSide(
+    color: Colors.transparent,
+  ),
+  borderRadius: BorderRadius.circular(16),
+);
+
 final lightTheme = ThemeData(
   primaryColor: kPrimaryColor,
   brightness: Brightness.light,
