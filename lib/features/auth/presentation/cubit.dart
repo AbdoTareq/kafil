@@ -1,3 +1,4 @@
+import 'package:kafil/core/feature/data/models/user_wrapper.dart';
 import 'package:kafil/features/auth/domain/usecases/usecases.dart';
 
 import '../../../../../export.dart';
@@ -12,13 +13,14 @@ class AuthCubit extends Cubit<AuthState> {
   final AuthUseCase useCase;
   final GetStorage box;
 
-  Future login(Map<String, String> user) async {
+  Future<UserWrapper?> login(Map<String, String> user) async {
     return await handleError(() async {
       final response = await useCase.login(user);
       return response.fold((l) {
         showSimpleDialog(text: l.message.toString());
+        return null;
       }, (r) {
-        box.write(kToken, r.toJson());
+        box.write(kUser, r.toJson());
         return r;
       });
     });
@@ -39,13 +41,6 @@ class AuthCubit extends Cubit<AuthState> {
   logout() async {
     return await handleError(() async {
       box.erase();
-      final response = await useCase.logout(box.read(kType) ?? '');
-      return response.fold((l) {
-        showSimpleDialog(text: l.message.toString());
-      }, (r) {
-        logger.i(r.toJson());
-        return r;
-      });
     });
   }
 }

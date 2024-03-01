@@ -1,6 +1,6 @@
 import '../../../export.dart';
 
-class PasswordInput extends StatelessWidget {
+class PasswordInput extends StatefulWidget {
   const PasswordInput({
     super.key,
     required this.controller,
@@ -17,17 +17,28 @@ class PasswordInput extends StatelessWidget {
   final Color? borderColor;
 
   @override
+  State<PasswordInput> createState() => _PasswordInputState();
+}
+
+class _PasswordInputState extends State<PasswordInput> {
+  bool isHide = true;
+  @override
   Widget build(BuildContext context) {
     return TextInput(
-      borderColor: borderColor ?? kPrimaryColor,
-      controller: controller,
+      borderColor: widget.borderColor ?? kPrimaryColor,
+      controller: widget.controller,
       autofillHints: const [AutofillHints.password],
-      hint: hint,
-      showUnderline: isUnderline,
-      prefixIcon: Icon(Icons.lock, color: borderColor),
-      isPass: true,
-      maxLines: 1,
-      validate: validate ?? (value) => value!.length > 5 ? null : passWar,
+      hint: widget.hint,
+      showUnderline: widget.isUnderline,
+      suffixIcon: InkWell(
+        onTap: () => setState(() {
+          isHide = !isHide;
+        }),
+        child: Icon(!isHide ? Icons.visibility : Icons.visibility_off),
+      ),
+      isPass: isHide,
+      validate:
+          widget.validate ?? (value) => value!.length > 5 ? null : passWar,
     );
   }
 }

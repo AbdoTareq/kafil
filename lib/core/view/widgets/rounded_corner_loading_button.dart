@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:kafil/core/app_colors.dart';
 
 class RoundedCornerLoadingButton extends StatefulWidget {
   const RoundedCornerLoadingButton({
-    Key? key,
+    super.key,
     required this.onPressed,
     required this.child,
     this.color,
     this.isOutlined = false,
     this.borderColor,
-  }) : super(key: key);
+  });
 
   final Function() onPressed;
   final Color? color;
@@ -34,11 +35,11 @@ class _RoundedCornerLoadingButtonState
                 shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                     RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(6),
-                  side: BorderSide(color: Theme.of(context).primaryColor),
+                  side: const BorderSide(color: kPrimaryColor),
                 )))
             : ButtonStyle(
                 backgroundColor: MaterialStateProperty.all<Color>(
-                    widget.color ?? Theme.of(context).primaryColor),
+                    widget.color ?? kPrimaryColor),
                 shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                     RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(6),
@@ -59,9 +60,8 @@ class _RoundedCornerLoadingButtonState
                 }
               },
         child: isLoading
-            ? Center(
-                child: CircularProgressIndicator(
-                    color: Theme.of(context).primaryColor))
+            ? const Center(
+                child: CircularProgressIndicator(color: kBGGreyColor))
             : widget.child);
   }
 }

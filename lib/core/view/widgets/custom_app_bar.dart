@@ -10,15 +10,26 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AppBar(
-      title: title
-          .tr()
-          .text
-          .gray900
-          .fontWeight(FontWeight.w600)
-          .size(18.sp)
-          .make(),
-      centerTitle: false,
+    return SafeArea(
+      child: Container(
+        color: kBGGreyColor,
+        child: Row(
+          children: [
+            if (context.router.canPop())
+              InkWell(
+                  onTap: () => context.popRoute(),
+                  child: Icon(Icons.navigate_before, size: 26.h)),
+            12.w.widthBox,
+            title
+                .tr()
+                .text
+                .gray900
+                .fontWeight(FontWeight.w600)
+                .size(18.sp)
+                .make(),
+          ],
+        ).px12(),
+      ),
     );
   }
 

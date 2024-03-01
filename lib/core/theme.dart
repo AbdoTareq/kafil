@@ -14,6 +14,11 @@ final lightTheme = ThemeData(
   brightness: Brightness.light,
   appBarTheme: const AppBarTheme().copyWith(color: kPrimaryColor),
   dividerColor: Colors.white54,
+  textTheme: Typography.blackCupertino.copyWith(
+    titleLarge: const TextStyle(color: kTextGreyColor, fontSize: 16),
+    titleMedium: const TextStyle(color: kTextGreyColor, fontSize: 14),
+    titleSmall: const TextStyle(color: kTextGreyColor, fontSize: 12),
+  ),
   fontFamily: 'Cairo',
   colorScheme: ColorScheme.fromSwatch(primarySwatch: kPrimaryColor)
       .copyWith(secondary: kPrimaryColor)

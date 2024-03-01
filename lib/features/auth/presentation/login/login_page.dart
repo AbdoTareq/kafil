@@ -1,8 +1,10 @@
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:kafil/assets.dart';
 import 'package:kafil/core/app_router.dart';
 import 'package:kafil/core/view/widgets/rounded_corner_loading_button.dart';
 import 'package:kafil/features/auth/presentation/cubit.dart';
+import 'package:super_rich_text/super_rich_text.dart';
 
 import '../../../../../export.dart';
 
@@ -16,6 +18,7 @@ class LoginPage extends HookWidget {
   Widget build(BuildContext context) {
     final emailTextController = useTextEditingController();
     final passTextController = useTextEditingController();
+    final isRemember = useState(true);
 
     loginClick() async {
       if (formKey.currentState!.validate()) {
@@ -23,57 +26,90 @@ class LoginPage extends HookWidget {
           "email": emailTextController.text,
           "password": passTextController.text,
         });
-        if (res?.data?.active == true) {
+        if (res != null) {
+          logger.i(res.toJson());
           context.router.replaceAll([HomeRoute()]);
-        } else if (res?.data?.active == false) {
-          showSimpleDialog(
-              text: 'You have been blocked Ask the admin to unblock you');
         }
       }
     }
 
     return Scaffold(
-        backgroundColor: Vx.gray900,
+        backgroundColor: kBGGreyColor,
         appBar: CustomAppBar(title: accountLogin.tr()),
         body: Form(
           key: formKey,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+          child: ListView(
             children: [
-              Image.asset(Assets.imagesLogo),
+              32.h.heightBox,
+              SvgPicture.asset(Assets.imagesLogin),
+              20.h.heightBox,
               TextInput(
                 autofillHints: const [AutofillHints.email],
                 controller: emailTextController,
                 textColor: kBlack,
                 inputType: TextInputType.emailAddress,
                 hint: mail,
-                validate: (value) => value!.length == 11 ? null : mailWar.tr(),
-              ),
+                validate: (value) => value!.contains('@') ? null : mailWar.tr(),
+              ).px20(),
               PasswordInput(
                 controller: passTextController,
                 hint: pass,
-              ),
-              forgetPass
-                  .tr()
-                  .text
-                  .end
-                  .bold
-                  .make()
-                  .p2()
-                  .wFull(context)
-                  .onTap(() {}),
-              20.heightBox,
+              ).px20(),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  CheckboxListTile(
+                    contentPadding: EdgeInsets.zero,
+                    visualDensity: VisualDensity.compact,
+                    controlAffinity: ListTileControlAffinity.leading,
+                    dense: true,
+                    activeColor: kPrimaryColor,
+                    checkColor: kBGGreyColor,
+                    side: MaterialStateBorderSide.resolveWith((states) =>
+                        const BorderSide(width: 2, color: Colors.black12)),
+                    title: Text(
+                      remember.tr(),
+                      style: Theme.of(context).textTheme.titleMedium,
+                    ),
+                    value: isRemember.value,
+                    onChanged: (value) => isRemember.value = value!,
+                  ).expand(),
+                  Text(
+                    forgetPass.tr(),
+                    style: Theme.of(context).textTheme.titleMedium,
+                  ),
+                  12.w.widthBox,
+                ],
+              ).px12(),
+              34.h.heightBox,
               RoundedCornerLoadingButton(
-                color: kBlack,
                 onPressed: loginClick,
-                child: accountLogin.tr().text.bold.xl.make().p8(),
-              ).wFull(context),
-              20.heightBox,
-              dontHaveAccount.tr().text.bold.makeCentered().p2().onTap(() {
+                child: Text(
+                  login.tr(),
+                  style: Theme.of(context)
+                      .textTheme
+                      .titleMedium
+                      ?.copyWith(color: kBGGreyColor),
+                ),
+              ).h(56.h).wFull(context).px20(),
+              24.heightBox,
+              SuperRichText(
+                text: '${dontHaveAccount.tr()}  ll${signup.tr()}ll',
+                style: Theme.of(context).textTheme.titleMedium!,
+                othersMarkers: [
+                  MarkerText(
+                    marker: 'll',
+                    style: Theme.of(context)
+                        .textTheme
+                        .titleMedium!
+                        .copyWith(color: kPrimaryColor),
+                  ),
+                ],
+              ).centered().p2().onTap(() {
                 context.pushRoute(SignUpRoute());
               }),
             ],
-          ).pSymmetric(h: 16),
+          ),
         ));
   }
 }

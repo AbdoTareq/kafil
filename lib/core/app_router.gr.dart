@@ -39,17 +39,6 @@ abstract class _$AppRouter extends RootStackRouter {
         child: LoginPage(key: args.key),
       );
     },
-    ResetPassPhoneRoute.name: (routeData) {
-      final args = routeData.argsAs<ResetPassPhoneRouteArgs>(
-          orElse: () => const ResetPassPhoneRouteArgs());
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: ResetPassPhonePage(
-          key: args.key,
-          phoneArg: args.phoneArg,
-        ),
-      );
-    },
     SettingsRoute.name: (routeData) {
       final args = routeData.argsAs<SettingsRouteArgs>(
           orElse: () => const SettingsRouteArgs());
@@ -179,44 +168,6 @@ class LoginRouteArgs {
   @override
   String toString() {
     return 'LoginRouteArgs{key: $key}';
-  }
-}
-
-/// generated route for
-/// [ResetPassPhonePage]
-class ResetPassPhoneRoute extends PageRouteInfo<ResetPassPhoneRouteArgs> {
-  ResetPassPhoneRoute({
-    Key? key,
-    String? phoneArg,
-    List<PageRouteInfo>? children,
-  }) : super(
-          ResetPassPhoneRoute.name,
-          args: ResetPassPhoneRouteArgs(
-            key: key,
-            phoneArg: phoneArg,
-          ),
-          initialChildren: children,
-        );
-
-  static const String name = 'ResetPassPhoneRoute';
-
-  static const PageInfo<ResetPassPhoneRouteArgs> page =
-      PageInfo<ResetPassPhoneRouteArgs>(name);
-}
-
-class ResetPassPhoneRouteArgs {
-  const ResetPassPhoneRouteArgs({
-    this.key,
-    this.phoneArg,
-  });
-
-  final Key? key;
-
-  final String? phoneArg;
-
-  @override
-  String toString() {
-    return 'ResetPassPhoneRouteArgs{key: $key, phoneArg: $phoneArg}';
   }
 }
 

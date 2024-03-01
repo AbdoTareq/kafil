@@ -7,7 +7,6 @@ import 'package:kafil/core/network/network.dart';
 import 'package:kafil/export.dart';
 import 'package:kafil/features/auth/domain/usecases/usecases.dart';
 import 'package:kafil/features/auth/presentation/cubit.dart';
-import 'package:kafil/features/auth/presentation/reset_pass_cubit.dart';
 import 'package:kafil/features/home/domain/usecases/usecases.dart';
 import 'package:kafil/features/home/presentation/bloc/home_bloc.dart';
 import 'package:kafil/features/settings/domain/usecases/usecases.dart';
@@ -31,7 +30,6 @@ Future<void> init() async {
   sl.registerFactory(() => SubjectTeachersCubit(useCase: sl()));
   sl.registerFactory(() => HomeBloc(useCase: sl()));
   sl.registerFactory(() => TeacherMeetingsCubit(useCase: sl()));
-  sl.registerFactory(() => ResetPassCubit(useCase: sl()));
 
   // Usecases
   sl.registerLazySingleton(() => AuthUseCase(repository: sl()));

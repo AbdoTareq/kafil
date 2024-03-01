@@ -48,6 +48,7 @@ dependencies:
   easy_localization: ^3.0.3
   get_it: ^7.6.6
   flutter_svg: ^1.1.6
+  super_rich_text: ^1.0.0
 
 dev_dependencies:
   flutter_test:

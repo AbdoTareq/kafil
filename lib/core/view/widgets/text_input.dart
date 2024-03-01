@@ -67,7 +67,7 @@ class TextInput extends StatelessWidget {
         hint.capitalized.tr().text.gray500.make(),
         8.h.heightBox,
         SizedBox(
-          height: 80.r,
+          height: 70.r,
           child: TextFormField(
             autofillHints: autofillHints,
             onTapOutside: (event) =>
@@ -95,15 +95,45 @@ class TextInput extends StatelessWidget {
               prefixIconConstraints: const BoxConstraints(
                 minWidth: 80,
               ),
-              border: InputBorder.none,
-              enabledBorder: null,
-              focusedBorder: null,
+              border: OutlineInputBorder(
+                borderSide: BorderSide(
+                  color: Colors.transparent,
+                  width: showUnderline ? 1 : 0,
+                ),
+                borderRadius: BorderRadius.circular(16),
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderSide: BorderSide(
+                  color: Colors.transparent,
+                  width: showUnderline ? 1 : 0,
+                ),
+                borderRadius: BorderRadius.circular(16),
+              ),
+              focusedErrorBorder: OutlineInputBorder(
+                borderSide: BorderSide(
+                  color: Colors.transparent,
+                  width: showUnderline ? 1 : 0,
+                ),
+                borderRadius: BorderRadius.circular(16),
+              ),
+              errorBorder: OutlineInputBorder(
+                borderSide: BorderSide(
+                  color: Colors.transparent,
+                  width: showUnderline ? 1 : 0,
+                ),
+                borderRadius: BorderRadius.circular(16),
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderSide: BorderSide(
+                  color: Colors.transparent,
+                  width: showUnderline ? 1 : 0,
+                ),
+                borderRadius: BorderRadius.circular(16),
+              ),
             ),
             onTap: onTap,
             cursorColor: cursorColor ?? borderColor,
             onChanged: onChanged,
-            minLines: minLines,
-            maxLines: maxLines,
             textInputAction: TextInputAction.next,
             autofocus: registerFocus,
             enableInteractiveSelection: !disableInput,

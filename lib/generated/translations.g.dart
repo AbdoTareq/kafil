@@ -1,8 +1,9 @@
 // DO NOT EDIT. This is code generated via package:easy_localization/generate.dart
 
 const accountLogin = 'Account Login';
+const login = 'Login';
 const selectItem2 = 'selectItem2';
-const signup = 'signup';
+const signup = 'Register';
 const work = 'work';
 const sort = 'sort';
 const newlyAdded = 'newlyAdded';
@@ -15,13 +16,13 @@ const listView = 'listView';
 const onceYourOrderIsConfirmedYouWillReceiveAnEmail =
     'onceYourOrderIsConfirmedYouWillReceiveAnEmail';
 const fullName = 'fullName';
-const mail = 'mail';
+const mail = 'Email Address';
 const ifYouHaveAnAccount = 'ifYouHaveAnAccount';
 const phone = 'phone';
-const forgetPass = 'forgetPass';
+const forgetPass = 'Forgot Password?';
 const logout = 'logout';
-const dontHaveAccount = 'dontHaveAccount';
-const pass = 'pass';
+const dontHaveAccount = 'Don’t have an account ?';
+const pass = 'Password';
 const personalInformation = 'personalInformation';
 const latitudeLongitude = 'latitudeLongitude';
 const nearestLandmark = 'nearestLandmark';
@@ -151,7 +152,7 @@ const inclusiveOfVat = 'inclusiveOfVat';
 const enterAddress = 'enterAddress';
 const paymentMethod = 'paymentMethod';
 const paymentDetails = 'paymentDetails';
-const remember = 'remember';
+const remember = 'Remember me';
 const downloadReceipt = 'downloadReceipt';
 const loginToAccount = 'loginToAccount';
 const accept = 'accept';
