@@ -61,85 +61,71 @@ class TextInput extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: 80.r,
-      child: TextFormField(
-        autofillHints: autofillHints,
-        onTapOutside: (event) => FocusManager.instance.primaryFocus!.unfocus(),
-        style: TextStyle(color: textColor ?? borderColor),
-        controller: controller,
-        autovalidateMode: AutovalidateMode.onUserInteraction,
-        decoration: InputDecoration(
-          errorStyle: const TextStyle(fontSize: 12, height: 0.8),
-          filled: color != null,
-          fillColor: color,
-          labelStyle: hintColor != null
-              ? TextStyle(color: hintColor, fontSize: fontSize)
-              : borderColor != null
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        hint.capitalized.tr().text.gray500.make(),
+        8.h.heightBox,
+        SizedBox(
+          height: 80.r,
+          child: TextFormField(
+            autofillHints: autofillHints,
+            onTapOutside: (event) =>
+                FocusManager.instance.primaryFocus!.unfocus(),
+            style: TextStyle(color: textColor ?? borderColor),
+            controller: controller,
+            autovalidateMode: AutovalidateMode.onUserInteraction,
+            decoration: InputDecoration(
+              errorStyle: const TextStyle(fontSize: 12, height: 0.8),
+              filled: true,
+              fillColor: kGreyColor,
+              labelStyle: hintColor != null
+                  ? TextStyle(color: hintColor, fontSize: fontSize)
+                  : borderColor != null
+                      ? TextStyle(color: borderColor, fontSize: fontSize)
+                      : TextStyle(fontSize: fontSize),
+              hintStyle: borderColor != null
                   ? TextStyle(color: borderColor, fontSize: fontSize)
                   : TextStyle(fontSize: fontSize),
-          hintStyle: borderColor != null
-              ? TextStyle(color: borderColor, fontSize: fontSize)
-              : TextStyle(fontSize: fontSize),
-          labelText: hint.tr().capitalized,
-          suffixIcon: suffixIcon,
-          suffixIconConstraints: const BoxConstraints(
-            minWidth: 80,
+              suffixIcon: suffixIcon,
+              suffixIconConstraints: const BoxConstraints(
+                minWidth: 80,
+              ),
+              prefixIcon: prefixIcon,
+              prefixIconConstraints: const BoxConstraints(
+                minWidth: 80,
+              ),
+              border: InputBorder.none,
+              enabledBorder: null,
+              focusedBorder: null,
+            ),
+            onTap: onTap,
+            cursorColor: cursorColor ?? borderColor,
+            onChanged: onChanged,
+            minLines: minLines,
+            maxLines: maxLines,
+            textInputAction: TextInputAction.next,
+            autofocus: registerFocus,
+            enableInteractiveSelection: !disableInput,
+            enabled: enabled,
+            keyboardType: inputType,
+            obscureText: isPass,
+            inputFormatters: [
+              if (inputType == TextInputType.number)
+                FilteringTextInputFormatter.allow(RegExp("[-0-9,.]")),
+            ],
+            readOnly: disableInput,
+            maxLength: maxLength,
+            onFieldSubmitted: (v) async {
+              FocusScope.of(context).requestFocus(focus);
+              try {
+                await function!();
+              } catch (e) {}
+            },
+            validator: validate,
           ),
-          prefixIcon: prefixIcon,
-          prefixIconConstraints: const BoxConstraints(
-            minWidth: 80,
-          ),
-          border: !showUnderline
-              ? InputBorder.none
-              : const OutlineInputBorder(
-                  borderRadius: BorderRadius.all(
-                  Radius.circular(15),
-                )),
-          enabledBorder: borderColor != null
-              ? OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(10.0),
-                  borderSide: BorderSide(
-                    color: borderColor!,
-                    width: 2.0,
-                  ),
-                )
-              : null,
-          focusedBorder: borderColor != null
-              ? OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(10.0),
-                  borderSide: BorderSide(
-                    color: borderColor!,
-                    width: 2.0,
-                  ),
-                )
-              : null,
         ),
-        onTap: onTap,
-        cursorColor: cursorColor ?? borderColor,
-        onChanged: onChanged,
-        minLines: minLines,
-        maxLines: maxLines,
-        textInputAction: TextInputAction.next,
-        autofocus: registerFocus,
-        enableInteractiveSelection: !disableInput,
-        enabled: enabled,
-        keyboardType: inputType,
-        obscureText: isPass,
-        inputFormatters: [
-          if (inputType == TextInputType.number)
-            FilteringTextInputFormatter.allow(RegExp("[-0-9,.]")),
-        ],
-        readOnly: disableInput,
-        maxLength: maxLength,
-        onFieldSubmitted: (v) async {
-          FocusScope.of(context).requestFocus(focus);
-          try {
-            await function!();
-          } catch (e) {}
-        },
-        validator: validate,
-      ),
+      ],
     );
   }
 }

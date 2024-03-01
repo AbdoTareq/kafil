@@ -1,6 +1,6 @@
 // DO NOT EDIT. This is code generated via package:easy_localization/generate.dart
 
-const login = 'login';
+const accountLogin = 'Account Login';
 const selectItem2 = 'selectItem2';
 const signup = 'signup';
 const work = 'work';

@@ -1,8 +1,8 @@
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:kafil/assets.dart';
 import 'package:kafil/core/app_router.dart';
 import 'package:kafil/core/view/widgets/rounded_corner_loading_button.dart';
 import 'package:kafil/features/auth/presentation/cubit.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
 
 import '../../../../../export.dart';
 
@@ -12,16 +12,29 @@ class LoginPage extends HookWidget {
   final controller = sl<AuthCubit>();
   final GlobalKey<FormState> formKey = GlobalKey();
 
-  loginClick() {
-    if (formKey.currentState!.validate()) {}
-  }
-
   @override
   Widget build(BuildContext context) {
     final emailTextController = useTextEditingController();
     final passTextController = useTextEditingController();
+
+    loginClick() async {
+      if (formKey.currentState!.validate()) {
+        final res = await controller.login({
+          "email": emailTextController.text,
+          "password": passTextController.text,
+        });
+        if (res?.data?.active == true) {
+          context.router.replaceAll([HomeRoute()]);
+        } else if (res?.data?.active == false) {
+          showSimpleDialog(
+              text: 'You have been blocked Ask the admin to unblock you');
+        }
+      }
+    }
+
     return Scaffold(
-        appBar: CustomAppBar(title: login.tr()),
+        backgroundColor: Vx.gray900,
+        appBar: CustomAppBar(title: accountLogin.tr()),
         body: Form(
           key: formKey,
           child: Column(
@@ -34,7 +47,6 @@ class LoginPage extends HookWidget {
                 textColor: kBlack,
                 inputType: TextInputType.emailAddress,
                 hint: mail,
-                prefixIcon: const Icon(Icons.mail),
                 validate: (value) => value!.length == 11 ? null : mailWar.tr(),
               ),
               PasswordInput(
@@ -53,20 +65,8 @@ class LoginPage extends HookWidget {
               20.heightBox,
               RoundedCornerLoadingButton(
                 color: kBlack,
-                onPressed: () async {
-                  final res = await controller.login({
-                    "email": emailTextController.text,
-                    "password": passTextController.text,
-                  });
-                  if (res?.data?.active == true) {
-                    context.router.replaceAll([HomeRoute()]);
-                  } else if (res?.data?.active == false) {
-                    showSimpleDialog(
-                        text:
-                            'You have been blocked Ask the admin to unblock you');
-                  }
-                },
-                child: login.tr().text.bold.xl.make().p8(),
+                onPressed: loginClick,
+                child: accountLogin.tr().text.bold.xl.make().p8(),
               ).wFull(context),
               20.heightBox,
               dontHaveAccount.tr().text.bold.makeCentered().p2().onTap(() {
