@@ -15,20 +15,18 @@ abstract class _$AppRouter extends RootStackRouter {
 
   @override
   final Map<String, PageFactory> pagesMap = {
-    ContactRoute.name: (routeData) {
-      final args = routeData.argsAs<ContactRouteArgs>(
-          orElse: () => const ContactRouteArgs());
+    CountriesRoute.name: (routeData) {
+      final args = routeData.argsAs<CountriesRouteArgs>(
+          orElse: () => const CountriesRouteArgs());
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: ContactPage(key: args.key),
+        child: CountriesPage(key: args.key),
       );
     },
     HomeRoute.name: (routeData) {
-      final args =
-          routeData.argsAs<HomeRouteArgs>(orElse: () => const HomeRouteArgs());
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: HomePage(key: args.key),
+        child: const HomePage(),
       );
     },
     LoginRoute.name: (routeData) {
@@ -39,12 +37,20 @@ abstract class _$AppRouter extends RootStackRouter {
         child: LoginPage(key: args.key),
       );
     },
-    SettingsRoute.name: (routeData) {
-      final args = routeData.argsAs<SettingsRouteArgs>(
-          orElse: () => const SettingsRouteArgs());
+    ProfileRoute.name: (routeData) {
+      final args = routeData.argsAs<ProfileRouteArgs>(
+          orElse: () => const ProfileRouteArgs());
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: SettingsPage(key: args.key),
+        child: ProfilePage(key: args.key),
+      );
+    },
+    ServicesRoute.name: (routeData) {
+      final args = routeData.argsAs<ServicesRouteArgs>(
+          orElse: () => const ServicesRouteArgs());
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: ServicesPage(key: args.key),
       );
     },
     SignUpRoute.name: (routeData) {
@@ -55,92 +61,50 @@ abstract class _$AppRouter extends RootStackRouter {
         child: SignUpPage(key: args.key),
       );
     },
-    SubjectTeachersRoute.name: (routeData) {
-      final args = routeData.argsAs<SubjectTeachersRouteArgs>();
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: SubjectTeachersPage(
-          key: args.key,
-          subjectId: args.subjectId,
-        ),
-      );
-    },
-    TeacherMeetingsRoute.name: (routeData) {
-      final args = routeData.argsAs<TeacherMeetingsRouteArgs>(
-          orElse: () => const TeacherMeetingsRouteArgs());
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: TeacherMeetingsPage(key: args.key),
-      );
-    },
-    YearSubjectsRoute.name: (routeData) {
-      final args = routeData.argsAs<YearSubjectsRouteArgs>();
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: YearSubjectsPage(
-          key: args.key,
-          year: args.year,
-        ),
-      );
-    },
   };
 }
 
 /// generated route for
-/// [ContactPage]
-class ContactRoute extends PageRouteInfo<ContactRouteArgs> {
-  ContactRoute({
+/// [CountriesPage]
+class CountriesRoute extends PageRouteInfo<CountriesRouteArgs> {
+  CountriesRoute({
     Key? key,
     List<PageRouteInfo>? children,
   }) : super(
-          ContactRoute.name,
-          args: ContactRouteArgs(key: key),
+          CountriesRoute.name,
+          args: CountriesRouteArgs(key: key),
           initialChildren: children,
         );
 
-  static const String name = 'ContactRoute';
+  static const String name = 'CountriesRoute';
 
-  static const PageInfo<ContactRouteArgs> page =
-      PageInfo<ContactRouteArgs>(name);
+  static const PageInfo<CountriesRouteArgs> page =
+      PageInfo<CountriesRouteArgs>(name);
 }
 
-class ContactRouteArgs {
-  const ContactRouteArgs({this.key});
+class CountriesRouteArgs {
+  const CountriesRouteArgs({this.key});
 
   final Key? key;
 
   @override
   String toString() {
-    return 'ContactRouteArgs{key: $key}';
+    return 'CountriesRouteArgs{key: $key}';
   }
 }
 
 /// generated route for
 /// [HomePage]
-class HomeRoute extends PageRouteInfo<HomeRouteArgs> {
-  HomeRoute({
-    Key? key,
-    List<PageRouteInfo>? children,
-  }) : super(
+class HomeRoute extends PageRouteInfo<void> {
+  const HomeRoute({List<PageRouteInfo>? children})
+      : super(
           HomeRoute.name,
-          args: HomeRouteArgs(key: key),
           initialChildren: children,
         );
 
   static const String name = 'HomeRoute';
 
-  static const PageInfo<HomeRouteArgs> page = PageInfo<HomeRouteArgs>(name);
-}
-
-class HomeRouteArgs {
-  const HomeRouteArgs({this.key});
-
-  final Key? key;
-
-  @override
-  String toString() {
-    return 'HomeRouteArgs{key: $key}';
-  }
+  static const PageInfo<void> page = PageInfo<void>(name);
 }
 
 /// generated route for
@@ -172,31 +136,60 @@ class LoginRouteArgs {
 }
 
 /// generated route for
-/// [SettingsPage]
-class SettingsRoute extends PageRouteInfo<SettingsRouteArgs> {
-  SettingsRoute({
+/// [ProfilePage]
+class ProfileRoute extends PageRouteInfo<ProfileRouteArgs> {
+  ProfileRoute({
     Key? key,
     List<PageRouteInfo>? children,
   }) : super(
-          SettingsRoute.name,
-          args: SettingsRouteArgs(key: key),
+          ProfileRoute.name,
+          args: ProfileRouteArgs(key: key),
           initialChildren: children,
         );
 
-  static const String name = 'SettingsRoute';
+  static const String name = 'ProfileRoute';
 
-  static const PageInfo<SettingsRouteArgs> page =
-      PageInfo<SettingsRouteArgs>(name);
+  static const PageInfo<ProfileRouteArgs> page =
+      PageInfo<ProfileRouteArgs>(name);
 }
 
-class SettingsRouteArgs {
-  const SettingsRouteArgs({this.key});
+class ProfileRouteArgs {
+  const ProfileRouteArgs({this.key});
 
   final Key? key;
 
   @override
   String toString() {
-    return 'SettingsRouteArgs{key: $key}';
+    return 'ProfileRouteArgs{key: $key}';
+  }
+}
+
+/// generated route for
+/// [ServicesPage]
+class ServicesRoute extends PageRouteInfo<ServicesRouteArgs> {
+  ServicesRoute({
+    Key? key,
+    List<PageRouteInfo>? children,
+  }) : super(
+          ServicesRoute.name,
+          args: ServicesRouteArgs(key: key),
+          initialChildren: children,
+        );
+
+  static const String name = 'ServicesRoute';
+
+  static const PageInfo<ServicesRouteArgs> page =
+      PageInfo<ServicesRouteArgs>(name);
+}
+
+class ServicesRouteArgs {
+  const ServicesRouteArgs({this.key});
+
+  final Key? key;
+
+  @override
+  String toString() {
+    return 'ServicesRouteArgs{key: $key}';
   }
 }
 
@@ -225,110 +218,5 @@ class SignUpRouteArgs {
   @override
   String toString() {
     return 'SignUpRouteArgs{key: $key}';
-  }
-}
-
-/// generated route for
-/// [SubjectTeachersPage]
-class SubjectTeachersRoute extends PageRouteInfo<SubjectTeachersRouteArgs> {
-  SubjectTeachersRoute({
-    Key? key,
-    required int subjectId,
-    List<PageRouteInfo>? children,
-  }) : super(
-          SubjectTeachersRoute.name,
-          args: SubjectTeachersRouteArgs(
-            key: key,
-            subjectId: subjectId,
-          ),
-          initialChildren: children,
-        );
-
-  static const String name = 'SubjectTeachersRoute';
-
-  static const PageInfo<SubjectTeachersRouteArgs> page =
-      PageInfo<SubjectTeachersRouteArgs>(name);
-}
-
-class SubjectTeachersRouteArgs {
-  const SubjectTeachersRouteArgs({
-    this.key,
-    required this.subjectId,
-  });
-
-  final Key? key;
-
-  final int subjectId;
-
-  @override
-  String toString() {
-    return 'SubjectTeachersRouteArgs{key: $key, subjectId: $subjectId}';
-  }
-}
-
-/// generated route for
-/// [TeacherMeetingsPage]
-class TeacherMeetingsRoute extends PageRouteInfo<TeacherMeetingsRouteArgs> {
-  TeacherMeetingsRoute({
-    Key? key,
-    List<PageRouteInfo>? children,
-  }) : super(
-          TeacherMeetingsRoute.name,
-          args: TeacherMeetingsRouteArgs(key: key),
-          initialChildren: children,
-        );
-
-  static const String name = 'TeacherMeetingsRoute';
-
-  static const PageInfo<TeacherMeetingsRouteArgs> page =
-      PageInfo<TeacherMeetingsRouteArgs>(name);
-}
-
-class TeacherMeetingsRouteArgs {
-  const TeacherMeetingsRouteArgs({this.key});
-
-  final Key? key;
-
-  @override
-  String toString() {
-    return 'TeacherMeetingsRouteArgs{key: $key}';
-  }
-}
-
-/// generated route for
-/// [YearSubjectsPage]
-class YearSubjectsRoute extends PageRouteInfo<YearSubjectsRouteArgs> {
-  YearSubjectsRoute({
-    Key? key,
-    required Year year,
-    List<PageRouteInfo>? children,
-  }) : super(
-          YearSubjectsRoute.name,
-          args: YearSubjectsRouteArgs(
-            key: key,
-            year: year,
-          ),
-          initialChildren: children,
-        );
-
-  static const String name = 'YearSubjectsRoute';
-
-  static const PageInfo<YearSubjectsRouteArgs> page =
-      PageInfo<YearSubjectsRouteArgs>(name);
-}
-
-class YearSubjectsRouteArgs {
-  const YearSubjectsRouteArgs({
-    this.key,
-    required this.year,
-  });
-
-  final Key? key;
-
-  final Year year;
-
-  @override
-  String toString() {
-    return 'YearSubjectsRouteArgs{key: $key, year: $year}';
   }
 }

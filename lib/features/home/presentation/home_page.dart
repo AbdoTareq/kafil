@@ -1,49 +1,50 @@
+import 'package:flutter_svg/svg.dart';
+import 'package:kafil/assets.dart';
 import 'package:kafil/core/app_router.dart';
-import 'package:kafil/core/feature/data/models/level_wrapper.dart';
-import 'package:kafil/core/view/widgets/custom_bloc_builder.dart';
-import 'package:kafil/features/home/presentation/bloc/home_bloc.dart';
 
-import '../../../../export.dart';
+import '../../../export.dart';
 
 @RoutePage()
 class HomePage extends StatelessWidget {
-  HomePage({super.key});
-  final bloc = sl<HomeBloc>()..add(const GetLevelsEvent());
+  const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: const CustomAppBar(title: "Levels"),
-      body: CustomBlocBuilder<LevelEvent, List<LevelModel>>(
-          bloc: bloc,
-          onSuccess: (context, state) {
-            return CustomListViewBuilder(
-                itemCount: state.data!.length,
-                itemBuilder: (context, index) {
-                  final item = state.data![index];
-                  return Card(
-                    child: Column(
-                      children: [
-                        item.name.toString().text.bold.xl.make().p8(),
-                        Wrap(
-                          children: item.years!
-                              .map((e) => RoundedCornerButton(
-                                      color: kBlack,
-                                      onPressed: () {
-                                        context.pushRoute(
-                                            YearSubjectsRoute(year: e));
-                                      },
-                                      child:
-                                          e.name.toString().text.bold.xl.make())
-                                  .p4())
-                              .toList(),
-                        ),
-                        10.heightBox
-                      ],
-                    ),
-                  );
-                });
-          }).px12(),
+    return AutoTabsScaffold(
+      routes: [
+        ProfileRoute(),
+        CountriesRoute(),
+        ServicesRoute(),
+      ],
+      bottomNavigationBuilder: (_, tabsRouter) {
+        return BottomNavigationBar(
+          currentIndex: tabsRouter.activeIndex,
+          onTap: tabsRouter.setActiveIndex,
+          items: [
+            BottomNavigationBarItem(
+              label: whoAmI,
+              icon: SvgPicture.asset(Assets.imagesProfile),
+              activeIcon: SvgPicture.asset(
+                Assets.imagesProfileSelected,
+              ),
+            ),
+            BottomNavigationBarItem(
+              label: countries,
+              icon: SvgPicture.asset(Assets.imagesCountries),
+              activeIcon: SvgPicture.asset(
+                Assets.imagesCountriesSelected,
+              ),
+            ),
+            BottomNavigationBarItem(
+              label: services,
+              icon: SvgPicture.asset(Assets.imagesCart),
+              activeIcon: SvgPicture.asset(
+                Assets.imagesServiceSelected,
+              ),
+            ),
+          ],
+        );
+      },
     );
   }
 }

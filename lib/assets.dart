@@ -1,6 +1,6 @@
 class Assets {
   Assets._();
-  
+
   /// Assets for imagesCart
   /// assets/images/cart.svg
   static const String imagesCart = "assets/images/cart.svg";
@@ -8,6 +8,11 @@ class Assets {
   /// Assets for imagesCountries
   /// assets/images/countries.svg
   static const String imagesCountries = "assets/images/countries.svg";
+
+  /// Assets for imagesCountriesSelected
+  /// assets/images/countries_selected.svg
+  static const String imagesCountriesSelected =
+      "assets/images/countries_selected.svg";
 
   /// Assets for imagesFace
   /// assets/images/face.svg
@@ -33,16 +38,26 @@ class Assets {
   /// assets/images/profile.svg
   static const String imagesProfile = "assets/images/profile.svg";
 
+  /// Assets for imagesProfileSelected
+  /// assets/images/profile_selected.svg
+  static const String imagesProfileSelected =
+      "assets/images/profile_selected.svg";
+
   /// Assets for imagesRegisterProfile
   /// assets/images/register_profile.svg
-  static const String imagesRegisterProfile = "assets/images/register_profile.svg";
+  static const String imagesRegisterProfile =
+      "assets/images/register_profile.svg";
 
   /// Assets for imagesServiceCart
   /// assets/images/service_cart.svg
   static const String imagesServiceCart = "assets/images/service_cart.svg";
 
+  /// Assets for imagesServiceSelcted
+  /// assets/images/service_selcted.svg
+  static const String imagesServiceSelected =
+      "assets/images/service_selcted.svg";
+
   /// Assets for imagesTwitter
   /// assets/images/twitter.svg
   static const String imagesTwitter = "assets/images/twitter.svg";
 }
-

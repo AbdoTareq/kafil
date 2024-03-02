@@ -1,15 +1,13 @@
-import 'package:kafil/assets.dart';
 import 'package:kafil/core/view/widgets/custom_cubit_builder.dart';
-import 'package:kafil/core/view/widgets/old_fade_image.dart';
 import 'package:kafil/core/view/widgets/rounded_corner_loading_button.dart';
-import 'package:kafil/features/teachers/presentation/bloc/teacher_meetings_cubit.dart';
+import 'package:kafil/features/profile/presentation/profile_cubit.dart';
 
 import '../../../../../export.dart';
 
 @RoutePage()
-class TeacherMeetingsPage extends StatelessWidget {
-  TeacherMeetingsPage({super.key});
-  final cubit = sl<TeacherMeetingsCubit>()..get();
+class ProfilePage extends StatelessWidget {
+  ProfilePage({super.key});
+  final cubit = sl<ProfileCubit>()..get();
 
   @override
   Widget build(BuildContext context) {

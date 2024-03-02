@@ -7,13 +7,12 @@ import 'package:kafil/core/network/network.dart';
 import 'package:kafil/export.dart';
 import 'package:kafil/features/auth/domain/usecases/usecases.dart';
 import 'package:kafil/features/auth/presentation/cubit.dart';
+import 'package:kafil/features/countries/presentation/countries_cubit.dart';
 import 'package:kafil/features/home/domain/usecases/usecases.dart';
 import 'package:kafil/features/home/presentation/bloc/home_bloc.dart';
-import 'package:kafil/features/settings/domain/usecases/usecases.dart';
-import 'package:kafil/features/settings/presentation/cubit.dart';
-import 'package:kafil/features/teachers/domain/usecases/usecases.dart';
-import 'package:kafil/features/teachers/presentation/bloc/subject_teachers_cubit.dart';
-import 'package:kafil/features/teachers/presentation/bloc/teacher_meetings_cubit.dart';
+import 'package:kafil/features/services/presentation/services_cubit.dart';
+import 'package:kafil/features/profile/domain/usecases/usecases.dart';
+import 'package:kafil/features/profile/presentation/profile_cubit.dart';
 import 'package:requests_inspector/requests_inspector.dart';
 
 import 'feature/data/repositories/repository_imp.dart';
@@ -26,14 +25,13 @@ Future<void> init() async {
   //! Features - posts
   // Bloc
   sl.registerFactory(() => AuthCubit(useCase: sl(), box: sl()));
-  sl.registerFactory(() => SettingsCubit(useCase: sl()));
-  sl.registerFactory(() => SubjectTeachersCubit(useCase: sl()));
+  sl.registerFactory(() => ServicesCubit(useCase: sl()));
+  sl.registerFactory(() => ProfileCubit(useCase: sl()));
   sl.registerFactory(() => HomeBloc(useCase: sl()));
-  sl.registerFactory(() => TeacherMeetingsCubit(useCase: sl()));
+  sl.registerFactory(() => CountriesCubit(useCase: sl()));
 
   // Usecases
   sl.registerLazySingleton(() => AuthUseCase(repository: sl()));
-  sl.registerLazySingleton(() => SettingsUseCase(repository: sl()));
   sl.registerLazySingleton(() => TeachersUseCase(repository: sl()));
   sl.registerLazySingleton(() => HomeUseCase(repository: sl()));
 

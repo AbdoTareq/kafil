@@ -12,7 +12,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Container(
-        color: kBGGreyColor,
+        color: Colors.transparent,
         child: Row(
           children: [
             if (context.router.canPop())

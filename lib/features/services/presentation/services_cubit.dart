@@ -1,10 +1,10 @@
 import 'package:kafil/export.dart';
-import 'package:kafil/features/teachers/domain/usecases/usecases.dart';
+import 'package:kafil/features/profile/domain/usecases/usecases.dart';
 
-class TeacherMeetingsCubit extends Cubit<BaseState<Map>> {
+class ServicesCubit extends Cubit<BaseState<Map>> {
   final TeachersUseCase useCase;
 
-  TeacherMeetingsCubit({required this.useCase}) : super(const BaseState());
+  ServicesCubit({required this.useCase}) : super(const BaseState());
 
   Future get() async {
     emit(state.copyWith(status: RxStatus.Loading));
