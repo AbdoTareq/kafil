@@ -18,6 +18,7 @@ const MaterialColor kPrimaryColor = MaterialColor(0xff1DBF73, color);
 const MaterialColor kYellowColor = MaterialColor(0xffFFCB31, color);
 
 const MaterialColor kGreyColor = MaterialColor(0xffF9F9F9, color);
+const MaterialColor kGreyShade = Colors.grey;
 const MaterialColor kTextGreyColor = MaterialColor(0xff696F79, color);
 const MaterialColor kBlack = MaterialColor(0xff000000, color);
 const MaterialColor kBGGreyColor = MaterialColor(0xffffffff, color);

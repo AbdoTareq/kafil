@@ -1,46 +1,21 @@
+import 'package:kafil/core/feature/data/models/countries_wrapper.dart';
 import 'package:kafil/export.dart';
 import 'package:kafil/features/countries/domain/usecases/usecases.dart';
 
-class CountriesCubit extends Cubit<BaseState<Map>> {
+class CountriesCubit extends Cubit<BaseState<CountriesWrapper>> {
   final CountriesUseCase useCase;
 
   CountriesCubit({required this.useCase}) : super(const BaseState());
 
-  Future get() async {
+  Future get(int page) async {
     emit(state.copyWith(status: RxStatus.Loading));
     return await handleError(() async {
-      final response = await useCase.getTeacherMeetings();
+      final response = await useCase.getCountries(page);
       return response.fold((l) {
         emit(state.copyWith(status: RxStatus.Error, errorMessage: l.message));
         showSimpleDialog(text: l.message.toString());
       }, (r) {
         emit(state.copyWith(status: RxStatus.Success, data: r));
-        return r;
-      });
-    });
-  }
-
-  Future endMeeting(int id) async {
-    return await handleError(() async {
-      final response = await useCase.endMeeting(id);
-      return response.fold((l) {
-        showSimpleDialog(text: l.message.toString());
-      }, (r) {
-        showSimpleDialog(text: r.toString());
-        return r;
-      });
-    });
-  }
-
-  Future sendZoomNotification(
-      int subjectId, String zoomId, String zoomPassword) async {
-    return await handleError(() async {
-      final response =
-          await useCase.sendZoomNotification(subjectId, zoomId, zoomPassword);
-      return response.fold((l) {
-        showSimpleDialog(text: l.message.toString());
-      }, (r) {
-        showSimpleDialog(text: r.toString());
         return r;
       });
     });

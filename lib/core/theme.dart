@@ -23,10 +23,21 @@ final lightTheme = ThemeData(
   appBarTheme: const AppBarTheme().copyWith(color: kPrimaryColor),
   dividerColor: Colors.white54,
   textTheme: Typography.blackCupertino.copyWith(
-    titleLarge: TextStyle(color: Vx.gray900, fontSize: 18.sp, fontWeight: FontWeight.w600),
-    titleMedium:  TextStyle(color: kTextGreyColor, fontSize: 14.sp),
-    titleSmall:  TextStyle(color: kTextGreyColor, fontSize: 12.sp),
-    bodySmall:  TextStyle(color: kBlack, fontSize: 11.sp),
+    titleLarge: TextStyle(
+        color: Vx.gray900, fontSize: 18.sp, fontWeight: FontWeight.w600),
+    titleMedium: TextStyle(color: kTextGreyColor, fontSize: 14.sp),
+    titleSmall: TextStyle(color: kTextGreyColor, fontSize: 12.sp),
+    bodySmall: TextStyle(color: kBlack, fontSize: 11.sp),
+    labelSmall: TextStyle(
+      color: kGreyShade.shade500,
+      fontSize: 14.sp,
+      fontWeight: FontWeight.w600,
+    ),
+    displaySmall: TextStyle(
+      color: kGreyShade.shade900,
+      fontSize: 14.sp,
+      fontWeight: FontWeight.w500,
+    ),
   ),
   fontFamily: 'Cairo',
   colorScheme: ColorScheme.fromSwatch(primarySwatch: kPrimaryColor)

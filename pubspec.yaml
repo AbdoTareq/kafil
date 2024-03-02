@@ -50,6 +50,7 @@ dependencies:
   flutter_svg: ^1.1.6
   super_rich_text: ^1.0.0
   another_stepper: ^1.2.2
+  number_paginator: ^0.4.1
 
 dev_dependencies:
   flutter_test:
