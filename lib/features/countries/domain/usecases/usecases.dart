@@ -4,10 +4,10 @@ import 'package:kafil/core/feature/domain/repositories/repositories.dart';
 
 import '../../../../export.dart';
 
-class TeachersUseCase {
+class CountriesUseCase {
   final Repository repository;
 
-  TeachersUseCase({required this.repository});
+  CountriesUseCase({required this.repository});
 
   Future<Either<Failure, TeacherDetailsWrapper>> getTeacherDetails(
       int teacherId) async {

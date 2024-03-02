@@ -1,8 +1,8 @@
 import 'package:kafil/export.dart';
-import 'package:kafil/features/profile/domain/usecases/usecases.dart';
+import 'package:kafil/features/countries/domain/usecases/usecases.dart';
 
 class CountriesCubit extends Cubit<BaseState<Map>> {
-  final TeachersUseCase useCase;
+  final CountriesUseCase useCase;
 
   CountriesCubit({required this.useCase}) : super(const BaseState());
 

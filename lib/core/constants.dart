@@ -15,6 +15,7 @@ const String kStudent = 'Student';
 const String kTeacher = 'Teacher';
 const String kType = 'Type';
 const String kUser = 'User';
+const String kPopular = 'popular';
 const double kAspectRatio = 17 / 9.1;
 
 enum UserType { kStudent, kTeacher }

@@ -21,6 +21,9 @@ class AuthCubit extends Cubit<AuthState> {
         return null;
       }, (r) {
         box.write(kUser, r.toJson());
+        if (r.accessToken != null) {
+          box.write(kToken, r.accessToken);
+        }
         return r;
       });
     });

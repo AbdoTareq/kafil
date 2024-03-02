@@ -57,6 +57,10 @@ class Assets {
   static const String imagesServiceSelected =
       "assets/images/service_selcted.svg";
 
+  /// Assets for imagesStar
+  /// assets/images/star.svg
+  static const String imagesStar = "assets/images/star.svg";
+
   /// Assets for imagesTwitter
   /// assets/images/twitter.svg
   static const String imagesTwitter = "assets/images/twitter.svg";

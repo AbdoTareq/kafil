@@ -50,6 +50,7 @@ const qty = 'qty';
 const addToCart = 'addToCart';
 const departments = 'departments';
 const services = 'Services';
+const popularServices = 'Popular Services';
 const news = 'news';
 const fairs = 'fairs';
 const contactUs = 'contactUs';

@@ -11,11 +11,13 @@ export 'package:flutter_bloc/flutter_bloc.dart';
 export 'package:flutter_screenutil/flutter_screenutil.dart';
 export 'package:get_storage/get_storage.dart';
 export 'package:kafil/core/base_state.dart';
+export 'package:flutter_svg/flutter_svg.dart';
 // most used packages
 export 'package:velocity_x/velocity_x.dart'
     hide IntExtension, BoolExtension, ThemeExtension;
 
 export 'core/app_colors.dart';
+export 'assets.dart';
 export 'core/constants.dart';
 // network
 export 'core/error/failures.dart';
