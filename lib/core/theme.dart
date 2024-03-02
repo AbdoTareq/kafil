@@ -42,7 +42,7 @@ final lightTheme = ThemeData(
   fontFamily: 'Cairo',
   colorScheme: ColorScheme.fromSwatch(primarySwatch: kPrimaryColor)
       .copyWith(secondary: kPrimaryColor)
-      .copyWith(background: const Color(0xFFE5E5E5)),
+      .copyWith(background: kBGGreyColor),
 );
 
 final darkTheme = ThemeData(

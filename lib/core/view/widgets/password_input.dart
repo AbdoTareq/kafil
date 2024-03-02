@@ -29,6 +29,7 @@ class _PasswordInputState extends State<PasswordInput> {
       controller: widget.controller,
       autofillHints: const [AutofillHints.password],
       hint: widget.hint,
+      maxLines: 1,
       showUnderline: widget.isUnderline,
       suffixIcon: InkWell(
         onTap: () => setState(() {

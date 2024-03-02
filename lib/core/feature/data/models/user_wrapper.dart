@@ -1,7 +1,7 @@
 class UserWrapper {
   int? status;
   bool? success;
-  Data? data;
+  User? data;
   String? accessToken;
 
   UserWrapper({this.status, this.success, this.data, this.accessToken});
@@ -9,23 +9,23 @@ class UserWrapper {
   UserWrapper.fromJson(Map<String, dynamic> json) {
     status = json['status'];
     success = json['success'];
-    data = json['data'] != null ? new Data.fromJson(json['data']) : null;
+    data = json['data'] != null ? User.fromJson(json['data']) : null;
     accessToken = json['access_token'];
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['status'] = this.status;
-    data['success'] = this.success;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['status'] = status;
+    data['success'] = success;
     if (this.data != null) {
       data['data'] = this.data!.toJson();
     }
-    data['access_token'] = this.accessToken;
+    data['access_token'] = accessToken;
     return data;
   }
 }
 
-class Data {
+class User {
   int? id;
   String? firstName;
   String? lastName;
@@ -39,7 +39,7 @@ class Data {
   Type? type;
   String? avatar;
 
-  Data(
+  User(
       {this.id,
       this.firstName,
       this.lastName,
@@ -53,7 +53,7 @@ class Data {
       this.type,
       this.avatar});
 
-  Data.fromJson(Map<String, dynamic> json) {
+  User.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     firstName = json['first_name'];
     lastName = json['last_name'];
@@ -61,7 +61,7 @@ class Data {
     if (json['tags'] != null) {
       tags = <Tags>[];
       json['tags'].forEach((v) {
-        tags!.add(new Tags.fromJson(v));
+        tags!.add(Tags.fromJson(v));
       });
     }
     favoriteSocialMedia = json['favorite_social_media'].cast<String>();
@@ -69,28 +69,28 @@ class Data {
     email = json['email'];
     birthDate = json['birth_date'];
     gender = json['gender'];
-    type = json['type'] != null ? new Type.fromJson(json['type']) : null;
+    type = json['type'] != null ? Type.fromJson(json['type']) : null;
     avatar = json['avatar'];
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['first_name'] = this.firstName;
-    data['last_name'] = this.lastName;
-    data['about'] = this.about;
-    if (this.tags != null) {
-      data['tags'] = this.tags!.map((v) => v.toJson()).toList();
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    data['first_name'] = firstName;
+    data['last_name'] = lastName;
+    data['about'] = about;
+    if (tags != null) {
+      data['tags'] = tags!.map((v) => v.toJson()).toList();
     }
-    data['favorite_social_media'] = this.favoriteSocialMedia;
-    data['salary'] = this.salary;
-    data['email'] = this.email;
-    data['birth_date'] = this.birthDate;
-    data['gender'] = this.gender;
-    if (this.type != null) {
-      data['type'] = this.type!.toJson();
+    data['favorite_social_media'] = favoriteSocialMedia;
+    data['salary'] = salary;
+    data['email'] = email;
+    data['birth_date'] = birthDate;
+    data['gender'] = gender;
+    if (type != null) {
+      data['type'] = type!.toJson();
     }
-    data['avatar'] = this.avatar;
+    data['avatar'] = avatar;
     return data;
   }
 }
@@ -107,9 +107,9 @@ class Tags {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['name'] = this.name;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    data['name'] = name;
     return data;
   }
 }
@@ -128,10 +128,10 @@ class Type {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['code'] = this.code;
-    data['name'] = this.name;
-    data['nice_name'] = this.niceName;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['code'] = code;
+    data['name'] = name;
+    data['nice_name'] = niceName;
     return data;
   }
 }

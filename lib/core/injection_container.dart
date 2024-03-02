@@ -9,8 +9,6 @@ import 'package:kafil/features/auth/domain/usecases/usecases.dart';
 import 'package:kafil/features/auth/presentation/cubit.dart';
 import 'package:kafil/features/countries/domain/usecases/usecases.dart';
 import 'package:kafil/features/countries/presentation/countries_cubit.dart';
-import 'package:kafil/features/home/domain/usecases/usecases.dart';
-import 'package:kafil/features/home/presentation/bloc/home_bloc.dart';
 import 'package:kafil/features/profile/domain/usecases/usecases.dart';
 import 'package:kafil/features/profile/presentation/profile_cubit.dart';
 import 'package:kafil/features/services/domain/usecases/usecases.dart';
@@ -31,15 +29,13 @@ Future<void> init() async {
   sl.registerFactory(() => ServicesCubit(useCase: sl()),
       instanceName: kPopular);
   sl.registerFactory(() => ProfileCubit(useCase: sl()));
-  sl.registerFactory(() => HomeBloc(useCase: sl()));
   sl.registerFactory(() => CountriesCubit(useCase: sl()));
 
   // Usecases
   sl.registerLazySingleton(() => AuthUseCase(repository: sl()));
-  sl.registerLazySingleton(() => TeachersUseCase(repository: sl()));
+  sl.registerLazySingleton(() => ProfileUseCase(repository: sl()));
   sl.registerLazySingleton(() => CountriesUseCase(repository: sl()));
   sl.registerLazySingleton(() => ServicesUseCase(repository: sl()));
-  sl.registerLazySingleton(() => HomeUseCase(repository: sl()));
 
   // Repository
   sl.registerLazySingleton<Repository>(() => RepoImp(remoteDataSource: sl()));

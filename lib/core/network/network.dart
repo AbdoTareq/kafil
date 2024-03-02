@@ -24,7 +24,7 @@ class Network {
     if (box.hasData(kToken)) {
       headers = {
         ...headers,
-        'Authorization': 'Bearer ${box.read(kToken)}',
+        'Authorization': '${box.read(kToken)}',
       };
     }
     final response = await requestType();

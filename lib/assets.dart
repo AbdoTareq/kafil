@@ -1,6 +1,10 @@
 class Assets {
   Assets._();
 
+  /// Assets for imagesCalender
+  /// assets/images/calender.svg
+  static const String imagesCalender = "assets/images/calender.svg";
+
   /// Assets for imagesCart
   /// assets/images/cart.svg
   static const String imagesCart = "assets/images/cart.svg";

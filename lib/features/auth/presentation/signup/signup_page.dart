@@ -12,11 +12,6 @@ class SignUpPage extends HookWidget {
   SignUpPage({super.key});
   final controller = sl<AuthCubit>();
   final GlobalKey<FormState> formKey = GlobalKey();
-  final List<UserChoice> userTypes = [
-    UserChoice(1, buyer.tr()),
-    UserChoice(2, seller.tr()),
-    UserChoice(3, both.tr()),
-  ];
 
   @override
   Widget build(BuildContext context) {

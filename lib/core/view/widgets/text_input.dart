@@ -66,64 +66,63 @@ class TextInput extends StatelessWidget {
       children: [
         hint.capitalized.tr().text.gray500.make(),
         8.h.heightBox,
-        SizedBox(
-          height: 56.h,
-          child: TextFormField(
-            autofillHints: autofillHints,
-            onTapOutside: (event) =>
-                FocusManager.instance.primaryFocus!.unfocus(),
-            style: TextStyle(color: textColor ?? borderColor),
-            controller: controller,
-            autovalidateMode: AutovalidateMode.onUserInteraction,
-            decoration: InputDecoration(
-              errorStyle: const TextStyle(fontSize: 12, height: 0.8),
-              filled: true,
-              fillColor: kGreyColor,
-              labelStyle: hintColor != null
-                  ? TextStyle(color: hintColor, fontSize: fontSize)
-                  : borderColor != null
-                      ? TextStyle(color: borderColor, fontSize: fontSize)
-                      : TextStyle(fontSize: fontSize),
-              hintStyle: borderColor != null
-                  ? TextStyle(color: borderColor, fontSize: fontSize)
-                  : TextStyle(fontSize: fontSize),
-              suffixIcon: suffixIcon,
-              suffixIconConstraints: const BoxConstraints(
-                minWidth: 80,
-              ),
-              prefixIcon: prefixIcon,
-              prefixIconConstraints: const BoxConstraints(
-                minWidth: 80,
-              ),
-              border: kBorder,
-              enabledBorder: kBorder,
-              focusedErrorBorder: kBorder,
-              errorBorder: kBorder,
-              focusedBorder: kBorder,
+        TextFormField(
+          autofillHints: autofillHints,
+          onTapOutside: (event) =>
+              FocusManager.instance.primaryFocus!.unfocus(),
+          style: TextStyle(color: textColor ?? borderColor),
+          controller: controller,
+          minLines: minLines ?? 1,
+          maxLines: maxLines ?? 3,
+          autovalidateMode: AutovalidateMode.onUserInteraction,
+          decoration: InputDecoration(
+            errorStyle: const TextStyle(fontSize: 12, height: 0.8),
+            filled: true,
+            fillColor: kGreyColor,
+            labelStyle: hintColor != null
+                ? TextStyle(color: hintColor, fontSize: fontSize)
+                : borderColor != null
+                    ? TextStyle(color: borderColor, fontSize: fontSize)
+                    : TextStyle(fontSize: fontSize),
+            hintStyle: borderColor != null
+                ? TextStyle(color: borderColor, fontSize: fontSize)
+                : TextStyle(fontSize: fontSize),
+            suffixIcon: suffixIcon,
+            suffixIconConstraints: const BoxConstraints(
+              minWidth: 80,
             ),
-            onTap: onTap,
-            cursorColor: cursorColor ?? borderColor,
-            onChanged: onChanged,
-            textInputAction: TextInputAction.next,
-            autofocus: registerFocus,
-            enableInteractiveSelection: !disableInput,
-            enabled: enabled,
-            keyboardType: inputType,
-            obscureText: isPass,
-            inputFormatters: [
-              if (inputType == TextInputType.number)
-                FilteringTextInputFormatter.allow(RegExp("[-0-9,.]")),
-            ],
-            readOnly: disableInput,
-            maxLength: maxLength,
-            onFieldSubmitted: (v) async {
-              FocusScope.of(context).requestFocus(focus);
-              try {
-                await function!();
-              } catch (e) {}
-            },
-            validator: validate,
+            prefixIcon: prefixIcon,
+            prefixIconConstraints: const BoxConstraints(
+              minWidth: 80,
+            ),
+            border: kBorder,
+            enabledBorder: kBorder,
+            focusedErrorBorder: kBorder,
+            errorBorder: kBorder,
+            focusedBorder: kBorder,
           ),
+          onTap: onTap,
+          cursorColor: cursorColor ?? borderColor,
+          onChanged: onChanged,
+          textInputAction: TextInputAction.next,
+          autofocus: registerFocus,
+          enableInteractiveSelection: !disableInput,
+          enabled: enabled,
+          keyboardType: inputType,
+          obscureText: isPass,
+          inputFormatters: [
+            if (inputType == TextInputType.number)
+              FilteringTextInputFormatter.allow(RegExp("[-0-9,.]")),
+          ],
+          readOnly: disableInput,
+          maxLength: maxLength,
+          onFieldSubmitted: (v) async {
+            FocusScope.of(context).requestFocus(focus);
+            try {
+              await function!();
+            } catch (e) {}
+          },
+          validator: validate,
         ),
       ],
     );
