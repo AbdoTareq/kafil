@@ -1,3 +1,6 @@
+import 'package:kafil/export.dart';
+import 'package:kafil/generated/translations.g.dart';
+
 class UserWrapper {
   int? status;
   bool? success;
@@ -135,3 +138,9 @@ class Type {
     return data;
   }
 }
+
+final List<Type> userTypes = [
+  Type(code: 2, name: seller, niceName: seller.tr()),
+  Type(code: 1, name: buyer, niceName: buyer.tr()),
+  Type(code: 3, name: both, niceName: both.tr()),
+];

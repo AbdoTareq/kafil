@@ -28,7 +28,7 @@ class LoginPage extends HookWidget {
         });
         if (res != null) {
           logger.i(res.toJson());
-          context.router.replaceAll([HomeRoute()]);
+          context.router.replaceAll([const HomeRoute()]);
         }
       }
     }

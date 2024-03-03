@@ -1,6 +1,6 @@
 import 'package:another_stepper/dto/stepper_data.dart';
 import 'package:another_stepper/widgets/another_stepper.dart';
-import 'package:kafil/core/feature/data/models/user_type.dart';
+import 'package:kafil/core/feature/data/models/user_wrapper.dart';
 import 'package:kafil/core/view/widgets/rounded_corner_loading_button.dart';
 import 'package:kafil/features/auth/presentation/cubit.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -116,7 +116,7 @@ class SignUpPage extends HookWidget {
                 12.h.heightBox,
                 userType.capitalized.tr().text.gray500.make().wFull(context),
                 12.h.heightBox,
-                DropdownButtonFormField<UserChoice>(
+                DropdownButtonFormField<Type>(
                   decoration: InputDecoration(
                     fillColor: kGreyColor,
                     filled: true,
@@ -135,7 +135,7 @@ class SignUpPage extends HookWidget {
                   items: userTypes
                       .map((valueItem) => DropdownMenuItem(
                             value: valueItem,
-                            child: Text(valueItem.name),
+                            child: Text(valueItem.name ?? ''),
                           ))
                       .toList(),
                 ),
