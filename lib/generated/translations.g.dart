@@ -19,6 +19,7 @@ const fullName = 'fullName';
 const mail = 'Email Address';
 const ifYouHaveAnAccount = 'ifYouHaveAnAccount';
 const phone = 'phone';
+const submit = 'Submit';
 const forgetPass = 'Forgot Password?';
 const logout = 'logout';
 const dontHaveAccount = 'Don’t have an account ?';
