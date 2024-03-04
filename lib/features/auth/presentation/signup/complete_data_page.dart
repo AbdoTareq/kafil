@@ -112,11 +112,17 @@ class CompleteDataPage extends HookWidget {
                   hint: about,
                 ).px20(),
                 16.h.heightBox,
-                TextInput(
-                  controller: salaryTextController,
-                  inputType: TextInputType.number,
-                  hint: salary,
+                Text(
+                  salary,
+                  style: Theme.of(context).textTheme.titleSmall,
                 ).px20(),
+                8.h.heightBox,
+                Container(
+                  color: kGreyColor,
+                  height: 56.r,
+                  width: double.infinity,
+                  child: VxStepper(),
+                ).cornerRadius(8).px20(),
                 16.h.heightBox,
                 TextInput(
                   controller: birthDateTextController,

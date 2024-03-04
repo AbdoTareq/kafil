@@ -36,6 +36,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // sl<GetStorage>().erase();
     return ScreenUtilInit(
         designSize: const Size(baseWidth, baseHeight),
         minTextAdapt: true,
