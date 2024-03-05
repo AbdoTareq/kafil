@@ -269,6 +269,7 @@ const cartEmpty = 'cartEmpty';
 const enterCouponCode = 'enterCouponCode';
 const remove = 'remove';
 const completeYourOrderFor = 'completeYourOrderFor';
+const completeData = 'Complete Data';
 const deliverTo = 'deliverTo';
 const free = 'free';
 const andGetFreeShipping = 'andGetFreeShipping';

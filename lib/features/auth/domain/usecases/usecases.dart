@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:kafil/core/feature/data/models/user_wrapper.dart';
 import 'package:kafil/core/feature/domain/repositories/repositories.dart';
 
@@ -14,7 +16,8 @@ class AuthUseCase {
   }
 
   Future<Either<Failure, UserWrapper>> signup(Map user) async {
-    return (repository.post('user/register', user)).then((value) =>
-        value.map((r) => r == null ? UserWrapper() : UserWrapper.fromJson(r)));
+    return (repository.uploadImage('user/register', user, File(user['avatar'])))
+        .then((value) => value
+            .map((r) => r == null ? UserWrapper() : UserWrapper.fromJson(r)));
   }
 }

@@ -11,7 +11,7 @@ class RoundedCornerLoadingButton extends StatefulWidget {
     this.borderColor,
   });
 
-  final Function() onPressed;
+  final Function onPressed;
   final Color? color;
   final Color? borderColor;
   final Widget child;

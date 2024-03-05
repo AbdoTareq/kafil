@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:dio/dio.dart';
 import 'package:kafil/core/error/exceptions.dart';
 
@@ -83,6 +85,24 @@ class Network {
     return req(() {
       return dio.get((baseUrl ?? _baseUrl) + endPoint,
           options: Options(headers: headers));
+    });
+  }
+
+  Future<Response> uploadImage(
+    String endPoint,
+    Map<String, dynamic> user,
+    File file,
+  ) async {
+    FormData formData;
+    String fileName = file.path.split('/').last;
+    formData = FormData.fromMap({
+      ...user,
+      'avatar': [await MultipartFile.fromFile(file.path, filename: fileName)],
+    });
+    logger.i(formData.fields);
+    return req(() {
+      return dio.post(_baseUrl + endPoint,
+          data: formData, options: Options(headers: headers));
     });
   }
 

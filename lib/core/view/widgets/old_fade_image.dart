@@ -1,7 +1,7 @@
 import '../../../export.dart';
 
-class OldFadeImage extends StatelessWidget {
-  const OldFadeImage({
+class FadeImage extends StatelessWidget {
+  const FadeImage({
     super.key,
     this.errorImagePath,
     this.imagePath,

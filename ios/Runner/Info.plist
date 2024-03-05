@@ -7,6 +7,12 @@
       <string>en</string>
       <string>ar</string>
     </array>
+    <key>NSCameraUsageDescription</key>
+    <string>Needed in taking photos to add profile image</string>
+    <key>NSLocalizedDescription</key>
+    <string>Needed in saving add profile image</string>
+    <key>NSPhotoLibraryUsageDescription</key>
+    <string>Needed in taking photos to add profile image</string>
     <key>ITSAppUsesNonExemptEncryption</key>
     <false/>
     <key>CFBundleDevelopmentRegion</key>

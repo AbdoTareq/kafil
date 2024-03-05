@@ -1,5 +1,3 @@
-import 'package:flutter_svg/svg.dart';
-import 'package:kafil/assets.dart';
 import 'package:kafil/core/feature/data/models/services_wrapper.dart';
 import 'package:kafil/core/view/widgets/custom_cubit_builder.dart';
 import 'package:kafil/features/services/presentation/service_item.dart';

@@ -1,5 +1,3 @@
-// widgets
-export 'package:animated_custom_dropdown/custom_dropdown.dart';
 // routes
 export 'package:auto_route/annotations.dart';
 export 'package:auto_route/auto_route.dart';
@@ -33,7 +31,6 @@ export 'core/view/widgets/count_down_timer.dart';
 export 'core/view/widgets/custom_app_bar.dart';
 export 'core/view/widgets/custom_list_tile.dart';
 export 'core/view/widgets/custom_list_view_builder.dart';
-export 'core/view/widgets/fade_image.dart';
 export 'core/view/widgets/password_input.dart';
 export 'core/view/widgets/rounded_corner_button.dart';
 export 'core/view/widgets/row_text_icon.dart';

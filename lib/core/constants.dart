@@ -17,5 +17,3 @@ const String kType = 'Type';
 const String kUser = 'User';
 const String kPopular = 'popular';
 const double kAspectRatio = 17 / 9.1;
-
-enum UserType { kStudent, kTeacher }

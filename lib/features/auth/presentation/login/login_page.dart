@@ -106,7 +106,7 @@ class LoginPage extends HookWidget {
                   ),
                 ],
               ).centered().p2().onTap(() {
-                context.pushRoute(CompleteDataRoute());
+                context.pushRoute(SignUpRoute());
               }),
             ],
           ),

@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:dartz/dartz.dart';
 import 'package:kafil/core/error/failures.dart';
 import 'package:kafil/core/network/base_requests.dart';
@@ -25,6 +27,18 @@ class RepoImp implements Repository {
   Future<Either<Failure, Map<String, dynamic>?>> post(
       String endPoint, Map? data) async {
     final res = await remoteDataSource.post(endPoint, data);
+    return res.fold(
+      (failure) => left(failure),
+      (serverResponse) {
+        return right(serverResponse.data);
+      },
+    );
+  }
+
+  @override
+  Future<Either<Failure, Map<String, dynamic>?>> uploadImage(
+      String endPoint, Map? data, File file) async {
+    final res = await remoteDataSource.uploadImage(endPoint, data, file);
     return res.fold(
       (failure) => left(failure),
       (serverResponse) {

@@ -44,8 +44,7 @@ class ProfilePage extends HookWidget {
                     state.data?.favoriteSocialMedia?.contains('twitter') ??
                         false;
                 isLinked.value =
-                    state.data?.favoriteSocialMedia?.contains('linked') ??
-                        false;
+                    state.data?.favoriteSocialMedia?.contains('x') ?? false;
               },
               child: CustomCubitBuilder<User>(
                   cubit: cubit,

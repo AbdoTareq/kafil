@@ -1,4 +1,5 @@
 import 'package:kafil/core/feature/data/models/services_wrapper.dart';
+import 'package:kafil/core/view/widgets/old_fade_image.dart';
 
 import '../../../export.dart';
 
@@ -20,7 +21,7 @@ class ServiceItem extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             FadeImage(
-              imageUrl: item.mainImage,
+              imagePath: item.mainImage,
               height: 103,
               width: 151,
             ).cornerRadius(8),

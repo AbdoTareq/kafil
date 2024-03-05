@@ -15,14 +15,6 @@ abstract class _$AppRouter extends RootStackRouter {
 
   @override
   final Map<String, PageFactory> pagesMap = {
-    CompleteDataRoute.name: (routeData) {
-      final args = routeData.argsAs<CompleteDataRouteArgs>(
-          orElse: () => const CompleteDataRouteArgs());
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: CompleteDataPage(key: args.key),
-      );
-    },
     CountriesRoute.name: (routeData) {
       final args = routeData.argsAs<CountriesRouteArgs>(
           orElse: () => const CountriesRouteArgs());
@@ -70,35 +62,6 @@ abstract class _$AppRouter extends RootStackRouter {
       );
     },
   };
-}
-
-/// generated route for
-/// [CompleteDataPage]
-class CompleteDataRoute extends PageRouteInfo<CompleteDataRouteArgs> {
-  CompleteDataRoute({
-    Key? key,
-    List<PageRouteInfo>? children,
-  }) : super(
-          CompleteDataRoute.name,
-          args: CompleteDataRouteArgs(key: key),
-          initialChildren: children,
-        );
-
-  static const String name = 'CompleteDataRoute';
-
-  static const PageInfo<CompleteDataRouteArgs> page =
-      PageInfo<CompleteDataRouteArgs>(name);
-}
-
-class CompleteDataRouteArgs {
-  const CompleteDataRouteArgs({this.key});
-
-  final Key? key;
-
-  @override
-  String toString() {
-    return 'CompleteDataRouteArgs{key: $key}';
-  }
 }
 
 /// generated route for

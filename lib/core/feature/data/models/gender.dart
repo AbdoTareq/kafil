@@ -9,6 +9,6 @@ class Gender {
 }
 
 final List<Gender> genders = [
-  Gender(1, male.tr()),
-  Gender(2, female.tr()),
+  Gender(0, male.tr()),
+  Gender(1, female.tr()),
 ];
